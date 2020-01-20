@@ -50,7 +50,9 @@ INSERT INTO dbo.PACIENTE
            ('PACIENTE 1'
            ,'12345678909'
            ,GETDATE()-30*12*30
-           )           
+           )        
+
+GO
 
 SELECT * FROM dbo.PACIENTE 
 SELECT * FROM dbo.MEDICO
