@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             xmlns:i18n="clr-namespace:Builtcode.Doctor.UI.Mobile.i18n;assembly=Builtcode.Doctor.UI.Mobile"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+             Title="{Binding Title}"
+             x:Name="ViewPacienteDetail"
+             x:Class="Builtcode.Doctor.UI.Mobile.Views.PacienteDetail">
+    <ContentPage.Content>
+        <StackLayout Padding="20" BackgroundColor="White">
+            
+                <Label Text="{Binding Model.Id}" />
+        
+                <Label Text="{i18n:Translate Nome}" />
+                <Entry Text="{Binding Model.Nome}" />
+        
+                <Label Text="{i18n:Translate CPF}" />
+                <Entry Text="{Binding Model.CPF}" />
+        
+                <Label Text="{i18n:Translate Data_Nascimento}" />
+                <Entry Text="{Binding Model.Data_Nascimento}" />
+
+                <Button Text="{i18n:Translate SaveButton}" Command="{Binding SaveCommand}" />
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

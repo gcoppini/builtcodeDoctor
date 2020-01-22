@@ -1,3 +1,4 @@
+using System;
 using SQLite;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -45,13 +46,13 @@ namespace Builtcode.Doctor.UI.Mobile.Services
             
             if (exists == null)
             {
+                medico.Id = Guid.NewGuid();
                 return dbConn.Insert(medico);
             }
             else
             {
                 return dbConn.Update(medico);
             }
-            
         }
     }
 }

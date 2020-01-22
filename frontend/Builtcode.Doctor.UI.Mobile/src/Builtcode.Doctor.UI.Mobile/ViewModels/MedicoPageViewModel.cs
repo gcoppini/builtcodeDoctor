@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using MvvmHelpers;
-using Prism.AppModel;
 using Prism.Commands;
 using Prism.Navigation;
 using Prism.Services;
@@ -14,7 +10,6 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
 {
     public class MedicoPageViewModel : ViewModelBase
     {
-        
         public ObservableRangeCollection<Medico> Medicos { get; set; }
         
         public DelegateCommand<Medico> MedicoItemTappedCommand { get; }
@@ -37,18 +32,8 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
             
             AddItemCommand = new DelegateCommand(OnAddItemCommandExecuted);
             DeleteItemCommand = new DelegateCommand<Medico>(OnDeleteItemCommandExecuted);
-            
-            
             MedicoItemTappedCommand = new DelegateCommand<Medico>(OnMedicoItemTappedCommandExecuted);
-            
         }
-        
-        public void Initialize(NavigationParameters parameters)
-        {
-            if (Medicos == null)
-                Medicos = new ObservableRangeCollection<Medico>(_medicoService.GetAll());
-        }
-        
 
         public override void OnNavigatedTo(NavigationParameters parameters)
         {
@@ -59,8 +44,8 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
                     if(parameters.ContainsKey("medicoItem"))
                     {
                         Medico medico = parameters.GetValue<Medico>("medicoItem");
-                        _medicoService.SaveOrUpdate(medico);
-                        Medicos.Add(medico);
+                        if(_medicoService.SaveOrUpdate(medico) > 0)
+                            Medicos.Add(medico);
                         
                     }
                     break;
@@ -78,15 +63,19 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
                 { "new", true },
                 { "medicoItem", new Medico() }
             });
-        
-        
-        private void OnDeleteItemCommandExecuted(Medico item) =>
-            Medicos.Remove(item);
 
-        
+
+        private void OnDeleteItemCommandExecuted(Medico item)
+        {
+            if(_medicoService.Delete(item) > 0)
+                Medicos.Remove(item);
+        }
+
+
         //Eventos ListView
         private async void OnMedicoItemTappedCommandExecuted(Medico item) =>
             await _navigationService.NavigateAsync("MedicoDetail", new NavigationParameters{
+                { "new", true }, //Hack para atualizar ao editar
                 { "medicoItem", item }
             });
 

@@ -66,10 +66,10 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
         
         
         private async void OnAddMedicoCommandExecuted() => 
-            await _navigationService.NavigateAsync("MedicoPage?medico=Item1&medico=Item2");
+            await _navigationService.NavigateAsync("MedicoPage");
         
         private async void OnAddPacienteCommandExecuted() => 
-            await _navigationService.NavigateAsync("/NavigationPage/PacientePage?paciente=Item1&paciente=Item2&paciente=Item3");
+            await _navigationService.NavigateAsync("PacientePage");
         
 
         private void OnDeleteItemCommandExecuted(TodoItem item) =>

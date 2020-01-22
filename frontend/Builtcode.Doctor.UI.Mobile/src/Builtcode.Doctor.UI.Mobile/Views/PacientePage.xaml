@@ -14,21 +14,21 @@
         <ToolbarItem Text="{i18n:Translate AddButton}" Command="{Binding AddItemCommand}" />
     </ContentPage.ToolbarItems>
 
-    <ListView ItemsSource="{Binding TodoItems}"
+    <ListView ItemsSource="{Binding Pacientes}"
               IsRefreshing="{Binding IsBusy}"
               ItemTapped="Handle_ItemTapped">
         <ListView.Behaviors>
-            <behaviors:EventToCommandBehavior Command="{Binding TodoItemTappedCommand}" 
+            <behaviors:EventToCommandBehavior Command="{Binding PacienteItemTappedCommand}" 
                                               EventName="ItemTapped"
                                               EventArgsParameterPath="Item" />
         </ListView.Behaviors>
         <ListView.ItemTemplate>
             <DataTemplate>
-                <TextCell Text="{Binding Name}">
+                <TextCell Text="{Binding Nome}">
                     <TextCell.ContextActions>
                         <MenuItem Text="{i18n:Translate DeleteButton}"
                                   IsDestructive="true"
-                                  Command="{Binding BindingContext.DeleteItemCommand,Source={x:Reference view}}"
+                                  Command="{Binding BindingContext.DeleteItemCommand,Source={x:Reference ViewPaciente}}"
                                   CommandParameter="{Binding .}" />
                     </TextCell.ContextActions>
                 </TextCell>

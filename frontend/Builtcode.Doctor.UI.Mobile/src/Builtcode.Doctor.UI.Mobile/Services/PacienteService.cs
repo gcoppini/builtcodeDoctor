@@ -1,3 +1,4 @@
+using System;
 using SQLite;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -36,6 +37,21 @@ namespace Builtcode.Doctor.UI.Mobile.Services
         public int Edit(Paciente paciente)
         {
             return dbConn.Update(paciente);
+        }
+        
+        public int SaveOrUpdate(Paciente paciente)
+        {
+            var exists = dbConn.Table<Paciente>().Where(x => x.Id == paciente.Id).FirstOrDefault();
+            
+            if (exists == null)
+            {
+                paciente.Id = Guid.NewGuid();
+                return dbConn.Insert(paciente);
+            }
+            else
+            {
+                return dbConn.Update(paciente);
+            }
         }
     }
 }

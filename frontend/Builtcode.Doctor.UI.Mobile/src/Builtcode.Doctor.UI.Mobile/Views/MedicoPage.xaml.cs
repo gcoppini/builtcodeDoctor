@@ -2,7 +2,7 @@ using Xamarin.Forms;
 
 namespace Builtcode.Doctor.UI.Mobile.Views
 {
-    public partial class MedicoPage: ContentPage
+    public partial class MedicoPage : ContentPage
     {
         public MedicoPage()
         {

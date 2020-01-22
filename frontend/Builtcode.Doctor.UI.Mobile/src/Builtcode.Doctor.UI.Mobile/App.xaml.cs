@@ -46,6 +46,7 @@ namespace Builtcode.Doctor.UI.Mobile
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterInstance(CreateLogger());
             containerRegistry.RegisterInstance(CreateMedicoService());
+            containerRegistry.RegisterInstance(CreatePacienteService());
 
             // Navigating to "TabbedPage?createTab=ViewA&createTab=ViewB&createTab=ViewC will generate a TabbedPage
             // with three tabs for ViewA, ViewB, & ViewC
@@ -60,6 +61,7 @@ namespace Builtcode.Doctor.UI.Mobile
             containerRegistry.RegisterForNavigation<MedicoDetail>();
             
             containerRegistry.RegisterForNavigation<PacientePage>();
+            containerRegistry.RegisterForNavigation<PacienteDetail>();
             
         }
 
@@ -87,6 +89,8 @@ namespace Builtcode.Doctor.UI.Mobile
 
         private ILoggerFacade CreateLogger() => new DebugLogger();
         private  IMedicoService CreateMedicoService() => new MedicoService();
+        
+        private  IPacienteService CreatePacienteService() => new PacienteService();
         
 
         private void LogUnobservedTaskExceptions()
