@@ -29,3 +29,4 @@
 /home/gcoppini/Projetos/Builtcode/backend/Builtcode.Doctor.Web.Api/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.0/System.Security.AccessControl.dll
 /home/gcoppini/Projetos/Builtcode/backend/Builtcode.Doctor.Web.Api/bin/Debug/netcoreapp3.1/runtimes/unix/lib/netcoreapp2.1/System.Security.Principal.Windows.dll
 /home/gcoppini/Projetos/Builtcode/backend/Builtcode.Doctor.Web.Api/bin/Debug/netcoreapp3.1/runtimes/win/lib/netcoreapp2.1/System.Security.Principal.Windows.dll
+/home/gcoppini/Projetos/Builtcode/backend/Builtcode.Doctor.Web.Api/bin/Debug/netcoreapp3.1/Microsoft.Extensions.Logging.Abstractions.dll

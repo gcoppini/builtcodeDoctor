@@ -45,8 +45,13 @@ namespace Builtcode.Doctor.UI.Mobile
             // Register the Popup Plugin Navigation Service
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterInstance(CreateLogger());
+            
             containerRegistry.RegisterInstance(CreateMedicoService());
             containerRegistry.RegisterInstance(CreatePacienteService());
+            
+            containerRegistry.RegisterInstance(CreateRestService());
+            containerRegistry.RegisterInstance(CreateSynchManager());
+            
 
             // Navigating to "TabbedPage?createTab=ViewA&createTab=ViewB&createTab=ViewC will generate a TabbedPage
             // with three tabs for ViewA, ViewB, & ViewC
@@ -85,12 +90,17 @@ namespace Builtcode.Doctor.UI.Mobile
 
             // Handle when your app resumes
             System.Diagnostics.Debug.Print("Resume");
+
+            Container.Resolve<ISynchManager>().SaveBackendAsync();
+
         }
 
         private ILoggerFacade CreateLogger() => new DebugLogger();
         private  IMedicoService CreateMedicoService() => new MedicoService();
-        
         private  IPacienteService CreatePacienteService() => new PacienteService();
+        private  IRestService CreateRestService() => new RestService();
+        private  ISynchManager CreateSynchManager() => new SynchManager(new RestService(), new  MedicoService(), new PacienteService());
+        
         
 
         private void LogUnobservedTaskExceptions()
