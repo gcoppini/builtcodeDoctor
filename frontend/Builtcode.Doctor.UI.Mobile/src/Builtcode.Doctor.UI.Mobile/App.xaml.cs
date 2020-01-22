@@ -45,7 +45,7 @@ namespace Builtcode.Doctor.UI.Mobile
             // Register the Popup Plugin Navigation Service
             containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterInstance(CreateLogger());
-
+            containerRegistry.RegisterInstance(CreateMedicoService());
 
             // Navigating to "TabbedPage?createTab=ViewA&createTab=ViewB&createTab=ViewC will generate a TabbedPage
             // with three tabs for ViewA, ViewB, & ViewC
@@ -55,6 +55,12 @@ namespace Builtcode.Doctor.UI.Mobile
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<SplashScreenPage>();
             containerRegistry.RegisterForNavigation<TodoItemDetail>();
+            
+            containerRegistry.RegisterForNavigation<MedicoPage>();
+            containerRegistry.RegisterForNavigation<MedicoDetail>();
+            
+            containerRegistry.RegisterForNavigation<PacientePage>();
+            
         }
 
         protected override void OnStart()
@@ -76,10 +82,12 @@ namespace Builtcode.Doctor.UI.Mobile
             base.OnResume();
 
             // Handle when your app resumes
+            System.Diagnostics.Debug.Print("Resume");
         }
 
-        private ILoggerFacade CreateLogger() => 
-            new DebugLogger();
+        private ILoggerFacade CreateLogger() => new DebugLogger();
+        private  IMedicoService CreateMedicoService() => new MedicoService();
+        
 
         private void LogUnobservedTaskExceptions()
         {

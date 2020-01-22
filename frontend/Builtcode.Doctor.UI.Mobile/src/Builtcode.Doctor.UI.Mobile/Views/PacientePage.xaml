@@ -7,13 +7,11 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
              Title="{Binding Title}"
-             x:Name="view"
-             x:Class="Builtcode.Doctor.UI.Mobile.Views.MainPage">
-
+             x:Name="ViewPaciente"
+             x:Class="Builtcode.Doctor.UI.Mobile.Views.PacientePage">
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="{i18n:Translate AddButton}" Command="{Binding AddItemCommand}" />
-        <ToolbarItem Text="{i18n:Translate Medico}" Command="{Binding MedicoItemCommand}" />
-        <ToolbarItem Text="{i18n:Translate Paciente}" Command="{Binding PacienteItemCommand}" />
     </ContentPage.ToolbarItems>
 
     <ListView ItemsSource="{Binding TodoItems}"
@@ -37,5 +35,4 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-
 </ContentPage>

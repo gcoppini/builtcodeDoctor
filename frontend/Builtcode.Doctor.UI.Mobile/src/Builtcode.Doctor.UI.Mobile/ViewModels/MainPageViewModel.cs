@@ -21,6 +21,9 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
             TodoItems = new ObservableRangeCollection<TodoItem>();
 
             AddItemCommand = new DelegateCommand(OnAddItemCommandExecuted);
+            MedicoItemCommand = new DelegateCommand(OnAddMedicoCommandExecuted);
+            PacienteItemCommand = new DelegateCommand(OnAddPacienteCommandExecuted);
+            
             DeleteItemCommand = new DelegateCommand<TodoItem>(OnDeleteItemCommandExecuted);
             TodoItemTappedCommand = new DelegateCommand<TodoItem>(OnTodoItemTappedCommandExecuted);
         }
@@ -28,6 +31,8 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
         public ObservableRangeCollection<TodoItem> TodoItems { get; set; }
 
         public DelegateCommand AddItemCommand { get; }
+        public DelegateCommand MedicoItemCommand { get; }
+        public DelegateCommand PacienteItemCommand { get; }
 
         public DelegateCommand<TodoItem> DeleteItemCommand { get; }
 
@@ -58,6 +63,14 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
                 { "new", true },
                 { "todoItem", new TodoItem() }
             });
+        
+        
+        private async void OnAddMedicoCommandExecuted() => 
+            await _navigationService.NavigateAsync("MedicoPage?medico=Item1&medico=Item2");
+        
+        private async void OnAddPacienteCommandExecuted() => 
+            await _navigationService.NavigateAsync("/NavigationPage/PacientePage?paciente=Item1&paciente=Item2&paciente=Item3");
+        
 
         private void OnDeleteItemCommandExecuted(TodoItem item) =>
             TodoItems.Remove(item);
@@ -66,5 +79,8 @@ namespace Builtcode.Doctor.UI.Mobile.ViewModels
             await _navigationService.NavigateAsync("TodoItemDetail", new NavigationParameters{
                 { "todoItem", item }
             });
+        
+        
+        
     }
 }

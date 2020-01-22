@@ -12,6 +12,7 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>Builtcode.Doctor.UI.Mobile.iOS</AssemblyName>
     <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
